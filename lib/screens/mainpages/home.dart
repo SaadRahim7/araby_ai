@@ -56,7 +56,10 @@ class _HomeState extends State<Home> {
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Padding(
-          padding: const EdgeInsets.only(left: 10, right: 10, bottom: 20),
+          padding: const EdgeInsets.only(
+            left: 10,
+            right: 10,
+          ),
           child: Column(
             children: const [
               SearchDetailNotification(),

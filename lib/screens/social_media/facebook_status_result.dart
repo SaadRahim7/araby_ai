@@ -22,7 +22,9 @@ class _FacebookResultState extends State<FacebookResult> {
               Icons.arrow_back_ios_new_rounded,
               color: Colors.black,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
           ),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.start,

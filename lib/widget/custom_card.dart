@@ -11,14 +11,14 @@ class CustomCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 1,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(14),
-      ),
-      child: SizedBox(
-        height: 120,
-        width: 120,
+    return Container(
+      height: 140,
+      width: 120,
+      child: Card(
+        elevation: 1,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(14),
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -29,7 +29,7 @@ class CustomCard extends StatelessWidget {
             CustomText(text: title),
             Text(
               decription ?? "",
-              style: const TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 14),
             )
           ],
         ),

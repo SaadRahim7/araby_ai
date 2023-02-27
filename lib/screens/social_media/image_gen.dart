@@ -1,8 +1,10 @@
 import 'dart:ffi';
 
+import 'package:araby_ai/screens/social_media/image_gen_resuly.dart';
 import 'package:araby_ai/widget/custom_button.dart';
 import 'package:araby_ai/widget/custom_text.dart';
 import 'package:araby_ai/widget/custom_textfeild.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ImageGen extends StatefulWidget {
@@ -57,22 +59,26 @@ class _SearchTextSelectState extends State<SearchTextSelect> {
             //Search and Notification
             SizedBox(
               child: Row(
-                children: const [
-                  Icon(Icons.arrow_back_ios_new_rounded),
-                  SizedBox(
+                children: [
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Icon(Icons.arrow_back_ios_new_rounded)),
+                  const SizedBox(
                     width: 10,
                   ),
-                  Expanded(
+                  const Expanded(
                     child: CustomTextField(
                       prefixIcon: Icon(
                         Icons.search_rounded,
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
-                  Icon(
+                  const Icon(
                     Icons.notifications_none_rounded,
                     size: 38,
                   )
@@ -130,7 +136,7 @@ class _SearchTextSelectState extends State<SearchTextSelect> {
                   ),
 
                   //Need Help Autu Selected
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Row(
@@ -142,8 +148,8 @@ class _SearchTextSelectState extends State<SearchTextSelect> {
                       ),
                       ElevatedButton.icon(
                           onPressed: () {},
-                          icon: Icon(Icons.select_all_outlined),
-                          label: Text("Auto Selected"))
+                          icon: const Icon(Icons.select_all_outlined),
+                          label: const Text("Auto Selected"))
                     ],
                   )
                 ],
@@ -217,26 +223,45 @@ class _ChipDataState extends State<ChipData> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Wrap(
-        spacing: 5,
-        children: items.map((item) {
-          return ChoiceChip(
-            backgroundColor: Colors.white,
-            selectedColor: Color(0xffae9bfa),
-            elevation: 0,
-            shape: StadiumBorder(side: BorderSide(color: Colors.grey)),
-            label: Text(item),
-            selected: selectedItems.contains(item),
-            onSelected: (bool selected) {
-              setState(() {
-                if (selected) {
-                  selectedItems.add(item);
+        children: items.map(
+          (item) {
+            bool isSelected = false;
+            if (selectedItems.contains(item)) {
+              isSelected = true;
+            }
+            return GestureDetector(
+              onTap: () {
+                if (!selectedItems.contains(item)) {
+                  if (selectedItems.length < 10) {
+                    selectedItems.add(item);
+                    setState(() {});
+                  }
                 } else {
-                  selectedItems.remove(item);
+                  selectedItems.removeWhere((element) => element == item);
+                  setState(() {});
                 }
-              });
-            },
-          );
-        }).toList(),
+              },
+              child: Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 5, vertical: 4),
+                  child: Container(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 5, horizontal: 12),
+                    decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        borderRadius: BorderRadius.circular(15),
+                        border: Border.all(
+                            color: isSelected
+                                ? const Color(0xff7a14ff)
+                                : const Color.fromARGB(255, 232, 232, 232),
+                            width: 2)),
+                    child: Text(
+                      item,
+                    ),
+                  )),
+            );
+          },
+        ).toList(),
       ),
     );
   }
@@ -253,9 +278,13 @@ class Button extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
         child: Container(
-            decoration: BoxDecoration(color: Colors.white),
+            decoration: const BoxDecoration(color: Colors.white),
             child: CustomButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(
+                  CupertinoPageRoute(builder: (context) => const ImageGenRes()),
+                );
+              },
               width: double.infinity,
               text: "Generate",
             )),
