@@ -28,12 +28,17 @@ class _ImageGenResState extends State<ImageGenRes> {
                 child: Container(
                     color: Colors.white,
                     child: Row(
-                      children: const [
-                        Icon(Icons.arrow_back_ios_new_rounded),
-                        SizedBox(
+                      children: [
+                        GestureDetector(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child:
+                                const Icon(Icons.arrow_back_ios_new_rounded)),
+                        const SizedBox(
                           width: 20,
                         ),
-                        Expanded(
+                        const Expanded(
                           child: CustomTextField(
                             prefixIcon: Icon(
                               Icons.search_rounded,
@@ -41,10 +46,10 @@ class _ImageGenResState extends State<ImageGenRes> {
                             hintText: "Looking for something",
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
-                        Icon(
+                        const Icon(
                           Icons.notifications_none_rounded,
                           size: 38,
                         )
@@ -92,7 +97,7 @@ class Card extends StatelessWidget {
         child: GridView.count(
             crossAxisSpacing: 6,
             mainAxisSpacing: 6,
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             crossAxisCount: 2,
             children: List.generate(

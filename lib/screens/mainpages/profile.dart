@@ -1,8 +1,10 @@
 import 'package:araby_ai/screens/mainpages/profile_section/images_section.dart';
 import 'package:araby_ai/screens/mainpages/profile_section/writing_section.dart';
+import 'package:araby_ai/screens/setting.dart';
 import 'package:araby_ai/screens/sign_up/email/email_register.dart';
 import 'package:araby_ai/screens/sign_up/mobile/numberregister.dart';
 import 'package:araby_ai/widget/custom_text.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
@@ -102,12 +104,20 @@ class ImageProfile extends StatelessWidget {
                 child: Image.asset("lib/assets/images/background.png",
                     fit: BoxFit.cover),
               ),
-              const Positioned(
+              Positioned(
                 top: 20,
                 right: 20,
-                child: Icon(
-                  Icons.settings_outlined,
-                  size: 30,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      CupertinoPageRoute(
+                          builder: (context) => const SettingPage()),
+                    );
+                  },
+                  child: const Icon(
+                    Icons.settings_outlined,
+                    size: 30,
+                  ),
                 ),
               ),
               Positioned(

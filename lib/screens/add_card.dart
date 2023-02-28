@@ -44,12 +44,17 @@ class StackI extends StatelessWidget {
             child: Image.asset("lib/assets/images/background.png",
                 fit: BoxFit.cover),
           ),
-          const Positioned(
+          Positioned(
             top: 20,
             left: 20,
-            child: Icon(
-              Icons.arrow_back_ios_new_outlined,
-              size: 20,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Icon(
+                Icons.arrow_back_ios_new_outlined,
+                size: 20,
+              ),
             ),
           ),
           const Positioned(
