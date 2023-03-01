@@ -20,14 +20,15 @@ class _SettingPageState extends State<SettingPage> {
           physics: const BouncingScrollPhysics(),
           headerSliverBuilder: (context, innerBoxIsScrolled) => [
             SliverToBoxAdapter(
-                child: Column(
-              children: const [
-                StacKbar(),
-                SizedBox(
-                  height: 15,
-                ),
-              ],
-            ))
+              child: Column(
+                children: const [
+                  StacKbar(),
+                  SizedBox(
+                    height: 15,
+                  ),
+                ],
+              ),
+            )
           ],
           body: const SettingSec(),
         ),
