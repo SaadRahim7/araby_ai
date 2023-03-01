@@ -40,6 +40,7 @@ class _NavBarState extends State<NavBar> {
         ),
         height: 70,
         child: BottomNavigationBar(
+          backgroundColor: Colors.white,
           elevation: 25,
           currentIndex: currentIndex,
           onTap: onTap,

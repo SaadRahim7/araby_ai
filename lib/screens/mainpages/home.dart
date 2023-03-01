@@ -59,6 +59,7 @@ class _HomeState extends State<Home> {
           padding: const EdgeInsets.only(
             left: 10,
             right: 10,
+            bottom: 10,
           ),
           child: Column(
             children: const [
@@ -152,67 +153,71 @@ class CardSec extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        //first row
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            GestureDetector(
-              onTap: () {
-                Navigator.of(context).push(
-                  CupertinoPageRoute(builder: (context) => const ImageGen()),
-                );
-              },
-              child: const CustomCard(
-                  title: "Images", image: "lib/assets/images/image.png"),
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.of(context).push(
-                  CupertinoPageRoute(builder: (context) => const SocialMedia()),
-                );
-              },
-              child: const CustomCard(
-                  title: "Social Media",
-                  image: "lib/assets/images/socialmedia.png"),
-            ),
-            const CustomCard(
-                title: "Emails", image: "lib/assets/images/email.png"),
-          ],
-        ),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          //first row
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                    CupertinoPageRoute(builder: (context) => const ImageGen()),
+                  );
+                },
+                child: const CustomCard(
+                    title: "Images", image: "lib/assets/images/image.png"),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                    CupertinoPageRoute(
+                        builder: (context) => const SocialMedia()),
+                  );
+                },
+                child: const CustomCard(
+                    title: "Social Media",
+                    image: "lib/assets/images/socialmedia.png"),
+              ),
+              const CustomCard(
+                  title: "Emails", image: "lib/assets/images/email.png"),
+            ],
+          ),
 
-        //second row
-        const SizedBox(
-          height: 5,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-            CustomCard(title: "Ads", image: "lib/assets/images/Ads.png"),
-            CustomCard(
-                title: "Messages", image: "lib/assets/images/messaging.png"),
-            CustomCard(title: "SEO", image: "lib/assets/images/seo.png"),
-          ],
-        ),
+          //second row
+          const SizedBox(
+            height: 5,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: const [
+              CustomCard(title: "Ads", image: "lib/assets/images/Ads.png"),
+              CustomCard(
+                  title: "Messages", image: "lib/assets/images/messaging.png"),
+              CustomCard(title: "SEO", image: "lib/assets/images/seo.png"),
+            ],
+          ),
 
-        //thred Row
+          //thred Row
 
-        const SizedBox(
-          height: 5,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-            CustomCard(
-                title: "E Commerce", image: "lib/assets/images/ecommerce.png"),
-            CustomCard(
-                title: "Long Doucment",
-                image: "lib/assets/images/longdocuments.png"),
-            CustomCard(title: "Other", image: "lib/assets/images/other.png"),
-          ],
-        )
-      ],
+          const SizedBox(
+            height: 5,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: const [
+              CustomCard(
+                  title: "E Commerce",
+                  image: "lib/assets/images/ecommerce.png"),
+              CustomCard(
+                  title: "Long Doucment",
+                  image: "lib/assets/images/longdocuments.png"),
+              CustomCard(title: "Other", image: "lib/assets/images/other.png"),
+            ],
+          )
+        ],
+      ),
     );
   }
 }
