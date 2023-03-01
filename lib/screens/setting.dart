@@ -20,10 +20,14 @@ class _SettingPageState extends State<SettingPage> {
           physics: const BouncingScrollPhysics(),
           headerSliverBuilder: (context, innerBoxIsScrolled) => [
             SliverToBoxAdapter(
-              child: Column(
-                children: const [StacKbar()],
-              ),
-            )
+                child: Column(
+              children: const [
+                StacKbar(),
+                SizedBox(
+                  height: 15,
+                ),
+              ],
+            ))
           ],
           body: const SettingSec(),
         ),
@@ -42,14 +46,14 @@ class StacKbar extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          height: 200,
+          height: 120,
           width: double.maxFinite,
           child: Stack(
             alignment: Alignment.topCenter,
             children: [
               Container(
                 width: double.maxFinite,
-                transform: Matrix4.translationValues(0.0, -80.0, 0.0),
+                transform: Matrix4.translationValues(0.0, 0.0, 0.0),
                 child: Image.asset("lib/assets/images/background.png",
                     fit: BoxFit.cover),
               ),
